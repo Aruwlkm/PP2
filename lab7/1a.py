@@ -23,9 +23,11 @@ while process :
     sec_in_img = pygame.transform.rotate(sec_img, angle_sec)
     screen.blit(sec_in_img, (x-sec_in_img.get_width()//2, y-sec_in_img.get_height()//2))
 
-    min_angle = -(min * 6+sec* 0.1)
-    rt_min_img = pygame.transform.rotate(min_img, min_angle)
-    screen.blit(rt_min_img, (x-rt_min_img.get_width()//2, y-rt_min_img.get_height()//2))
+    angle_min=-(min*6+sec*0.1)
+    rt_min=pygame.transform.rotate(min_img,angle_min)
+    screen.blit(rt_min,(x-rt_min.get_width()//2,y-rt_min.get_height()//2))
+
+
     
     font = pygame.font.SysFont('Arial', 36)
     time_text = font.render(current_time.strftime("%H:%M:%S"), True, (255, 0, 0))

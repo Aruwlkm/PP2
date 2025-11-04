@@ -7,3 +7,4 @@ def test(path):
     else:
         print("Path does not exist.")
 path=input()
+test(path)
