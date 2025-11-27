@@ -26,8 +26,8 @@ font = pygame.font.SysFont(None, 18)
 def draw_square(surface, color, start, end, width=2):
     x1, y1 = start
     x2, y2 = end
-    w = x2 - x1
-    h = y2 - y1
+    w = x2 - x1 #ени
+    h = y2 - y1 #биыктыгы
     size = min(abs(w), abs(h)) #квадраттын ени мен биыктиги бирдей болу ушин
     rect_x = x1 if w >= 0 else x1 - size # кай багытка салынатынын ескеру
     rect_y = y1 if h >= 0 else y1 - size
@@ -91,8 +91,8 @@ def draw_help(): #умытып калса
     help_height = 70
     help_x = 20
     help_y = 5
-    pygame.draw.rect(screen, (230, 230, 230), (help_x, help_y, help_width, help_height),border_radius=8)
-    pygame.draw.rect(screen, (80, 80, 80), (help_x, help_y, help_width, help_height),2,border_radius=8)
+    pygame.draw.rect(screen, (230, 230, 230), (help_x, help_y, help_width, help_height),border_radius=8)# фонды салу
+    pygame.draw.rect(screen, (80, 80, 80), (help_x, help_y, help_width, help_height),2,border_radius=8) # рамка салу
     y_offset=help_y +10
     for line in lines:
         text_surface=font.render(line,True,(40,40,40))

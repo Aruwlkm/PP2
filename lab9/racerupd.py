@@ -53,7 +53,7 @@ coin=spawn_coin()
 # Счетчик монет
 coins_collected = 0
 # настройки увеличения скорости врага
-speed_increase_threshold = 5  # каждые N очков — увеличивать скорость врага
+speed_increase_threshold = 1  # каждые N очков — увеличивать скорость врага
 next_speed_threshold = speed_increase_threshold  # следующий порог для увеличения скорости
 speed_increment = 1  # на сколько увеличивается скорость врага при достижении порога
 
