@@ -107,4 +107,4 @@ def delete_user(name):
 
 if __name__ == "__main__":
   create_table()
-insert_from_csv("data.csv")
+  insert_from_csv("data.csv") 
