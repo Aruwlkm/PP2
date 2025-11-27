@@ -20,7 +20,7 @@ RED = (200, 0, 0)
 WHITE = (255, 255, 255)
 
 # бастапкы параметры змейки
-snake = [(10, 10)]         # координаталар (x, y)
+snake =[(10, 10)]          # координаталар (x, y)
 dx = 1                     # по x
 dy = 0                     # по y
 
@@ -33,7 +33,7 @@ def spawn_food():
         if (x, y) not in snake:
             return (x, y)
 
-food = spawn_food()
+food = spawn_food()# тамактын орны
 
 score = 0
 level = 1

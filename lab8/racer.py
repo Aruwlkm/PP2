@@ -24,7 +24,7 @@ coin_img = pygame.image.load("coin.png")
 coin_img = pygame.transform.scale(coin_img, (35, 35))         # уменьшаем монету
 # Начальные позиции игрока
 player_x = WIDTH // 2
-player_y = HEIGHT - 120
+player_y = HEIGHT - 120 # ойыншынын машинасы томенги жакта туру ушн
 
 # Начальные позиции врага
 baska_x = random.randint(40, WIDTH - 40)
@@ -39,8 +39,6 @@ coins_collected = 0
 
 # Шрифт для текста
 font = pygame.font.Font(None, 36)
-
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -51,20 +49,20 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and player_x > 0:
         player_x -= 5
-    if keys[pygame.K_RIGHT] and player_x < WIDTH - player_img.get_width():
+    if keys[pygame.K_RIGHT] and player_x < WIDTH - player_img.get_width(): #ойыншынын экран шегинен шыкпауын кадагалайд
         player_x += 5
 
     # Движение врага
     baska_y += 7
-    if baska_y > HEIGHT:
-        baska_y = 0
-        baska_x = random.randint(40, WIDTH - 40)
+    if baska_y > HEIGHT: #егер ол экраннан тусип кетсе
+        baska_y = 0 # кайтадан пайда болады
+        baska_x = random.randint(40, WIDTH - 40)# жана позицияда пайда болады
 
     # Движение монеты
     coin_y += 5
     # Если монета ушла вниз — появится снова
     if coin_y > HEIGHT:
-        coin_y = -50
+        coin_y = -50  #ол жогарыдан кайтадан пайда болады
         coin_x = random.randint(40, WIDTH - 40)
 
     # Прямоугольники для коллизий
