@@ -9,9 +9,9 @@ def connect():
         port=5433
     )
 
-def create_table():
+def create_table(): #first_name and phonebook  бар кесте куру
     sql = """
-        CREATE TABLE phonebook (
+        CREATE TABLE phonebook ( 
             id SERIAL PRIMARY KEY,
             first_name VARCHAR(50),
             phone VARCHAR(20)
@@ -19,9 +19,9 @@ def create_table():
     """
     try:
         conn = connect()
-        cur = conn.cursor()
+        cur = conn.cursor() #дереккормен жумыс истеуге арналган
         cur.execute(sql)
-        conn.commit()
+        conn.commit()  # озгеристи сактау
         cur.close()
         conn.close()
         print("Table created!")
@@ -32,8 +32,8 @@ def insert_user(first_name, phone):
     try:
         conn = connect()
         cur = conn.cursor()
-        cur.execute(
-            "INSERT INTO phonebook (first_name, phone) VALUES (%s, %s)",
+        cur.execute( # sql команда орындау ушин колданылады
+            "INSERT INTO phonebook (first_name, phone) VALUES (%s, %s)", #кейн берилетн аргументтин орны
             (first_name, phone)
         )
         conn.commit()
@@ -43,7 +43,7 @@ def insert_user(first_name, phone):
     except Exception as e:
         print("Error inserting user:", e)
 
-def insert_from_csv(filename):
+def insert_or_update_from_csv(filename):
     try:
         conn = connect()
         cur = conn.cursor()
@@ -51,10 +51,12 @@ def insert_from_csv(filename):
             reader = csv.reader(f)
             next(reader)  
             for row in reader:
-                cur.execute(
-                    "INSERT INTO phonebook (first_name, phone) VALUES (%s, %s)",
-                    (row[0], row[1])
-                )
+                cur.execute("""
+                    INSERT INTO phonebook (first_name, phone)
+                    VALUES (%s, %s)
+                    ON CONFLICT (first_name)
+                    DO UPDATE SET phone=EXCLUDED.phone;
+                    """,(row[0], row[1]))
         conn.commit()
         cur.close()
         conn.close()
@@ -107,4 +109,4 @@ def delete_user(name):
 
 if __name__ == "__main__":
   create_table()
-  insert_from_csv("data.csv") 
+  insert_or_update_from_csv("data.csv") 

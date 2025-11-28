@@ -25,7 +25,7 @@ cur.execute("SELECT id FROM users WHERE username=%s", (username,))
 user = cur.fetchone()
 
 if user:
-    user_id = user[0]   # Бар болса — ID аламыз
+    user_id = user[0]   #бурын тиркелген
     cur.execute("SELECT score, level FROM user_score WHERE user_id=%s", (user_id,))  # Онын сонгы score и level жазбаларын аламыз
     progress = cur.fetchone()
     if progress:
@@ -55,9 +55,9 @@ def save_progress(score, level):      # user_score кестесине жазам
     print("Progress saved!")
 
 # Настройка игры
-SIZE = 25
+SIZE = 25  
 RES=800
-x, y = randrange(0, RES, SIZE), randrange(0, RES, SIZE)
+x, y = randrange(0, RES, SIZE), randrange(0, RES, SIZE) # координатты клетка бойыынша туралайды
 # Тамактын (кызыл=1, сары=2, күлгин=3)
 FOOD_VALUES = [1, 2, 3]
 food_value = 1
@@ -103,7 +103,7 @@ while running:
     # упай и уровень
     render_score = font_score.render(f"SCORE: {score}", 1, pygame.Color("orange"))
     render_level = font_level.render(f"LEVEL: {level}", 1, pygame.Color("orange"))
-    screen.blit(render_score, (5, 5))
+    screen.blit(render_score, (5, 5))    # render_score,score деген жазуды суретке айналдырады
     screen.blit(render_level, (5, 30))
 
     # Движение змейки
